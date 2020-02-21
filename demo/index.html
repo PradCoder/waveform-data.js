@@ -78,8 +78,8 @@
         <button data-action="generate">Generate using Web Audio API</button>
       </div>
     </div>
-
-    <script src="waveform-data.js"></script>
+    <script src="https://requirejs.org/docs/release/2.3.5/minified/require.js"></script>
+    <script src="../waveform-data.js"></script>
     <script>
       let waveformData = null;
 
@@ -140,7 +140,7 @@
         drawWaveform(canvas, waveformData, offsetX);
       });
 
-      document.querySelector('button[data-action="load-dat"]').addEventListener('click', function() {
+     /* document.querySelector('button[data-action="load-dat"]').addEventListener('click', function() {
         fetch('07023003-2channel.dat')
           .then(response => response.arrayBuffer())
           .then(buffer => WaveformData.create(buffer))
@@ -154,10 +154,10 @@
 
             waveformData = waveform;
           });
-      });
+      });*/
 
       document.querySelector('button[data-action="load-json"]').addEventListener('click', function() {
-        fetch('07023003-2channel.json')
+        fetch('../07023003-2channel.json')
           .then(response => response.json())
           .then(json => WaveformData.create(json))
           .then(waveform => {
@@ -173,7 +173,7 @@
       });
 
       document.querySelector('button[data-action="generate"]').addEventListener('click', function() {
-        fetch('07023003.mp3')
+        fetch('../07023003.mp3')
           .then(response => response.arrayBuffer())
           .then(buffer => {
             const audioContext = new AudioContext();
